@@ -13,6 +13,7 @@ def _get_totals(lines: List[str]) -> List[int]:
             count += int(l)
     return totals
 
+
 def solve(data):
     totals = sorted(_get_totals(data.splitlines()))
 

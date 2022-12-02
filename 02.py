@@ -1,8 +1,9 @@
 from __future__ import annotations
 
 from enum import IntEnum
-from util import load
 from typing import List
+from util import load
+
 
 class Outcome(IntEnum):
     LOSS = 0
@@ -30,14 +31,10 @@ class Shape(IntEnum):
         """Return the outcome of a game between two shapes."""
         if self == other:
             return Outcome.DRAW
-        elif self == Shape.ROCK and other == Shape.SCISSORS:
-            return Outcome.WIN
-        elif self == Shape.PAPER and other == Shape.ROCK:
-            return Outcome.WIN
-        elif self == Shape.SCISSORS and other == Shape.PAPER:
-            return Outcome.WIN
-        else:
+        elif self.value % 3 + 1 == other.value:
             return Outcome.LOSS
+        else:
+            return Outcome.WIN
 
     def from_outcome(self, outcome: Outcome):
         """Return the shape that would result in the given outcome."""
