@@ -81,7 +81,7 @@ def _total_score_p2(lines: List[str]) -> int:
     return total_score
 
 
-def solve(data):
+def solve(data: str):
     lines = data.splitlines()
 
     print(f"Part one: {_total_score_p1(lines)}")

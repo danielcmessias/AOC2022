@@ -14,7 +14,7 @@ def _get_totals(lines: List[str]) -> List[int]:
     return totals
 
 
-def solve(data):
+def solve(data: str):
     totals = sorted(_get_totals(data.splitlines()))
 
     # Part 1
