@@ -30,8 +30,8 @@ def part2(lines: List[str]) -> int:
 def solve(data: str):
     lines = data.splitlines()
 
-    print(part1(lines))
-    print(part2(lines))
+    print("Part 1", part1(lines))
+    print("Part 2", part2(lines))
 
 
 if __name__ == "__main__":
