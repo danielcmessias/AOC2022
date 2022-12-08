@@ -2,7 +2,7 @@ from typing import List, Set, Tuple
 from util import load
 
 
-def parseToSets(line: str) -> Tuple[Set, Set]:
+def parse_to_sets(line: str) -> Tuple[Set, Set]:
     a, b = line.split(",")
     a1, a2, b1, b2 = [int(s) for s in a.split("-") + b.split("-")]
     return set(range(a1, a2 + 1)), set(range(b1, b2 + 1))
@@ -11,7 +11,7 @@ def parseToSets(line: str) -> Tuple[Set, Set]:
 def part1(lines: List[str]) -> int:
     total = 0
     for l in lines:
-        setA, setB = parseToSets(l)
+        setA, setB = parse_to_sets(l)
         if setA.issubset(setB) or setB.issubset(setA):
             total += 1
 
@@ -21,7 +21,7 @@ def part1(lines: List[str]) -> int:
 def part2(lines: List[str]) -> int:
     total = 0
     for l in lines:
-        setA, setB = parseToSets(l)
+        setA, setB = parse_to_sets(l)
         if len(setA.intersection(setB)) > 0:
             total += 1
     return total

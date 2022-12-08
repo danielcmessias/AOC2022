@@ -30,7 +30,7 @@ def _make_tree():
     return defaultdict(_make_tree)
 
 
-def parseTree(lines: List[str]):
+def parse_tree(lines: List[str]):
     tree = _make_tree()
     currentPath = ["/"]
     for l in lines:
@@ -50,12 +50,12 @@ def parseTree(lines: List[str]):
     return tree
 
 
-def sumDirectory(tree, path=[], all_dirs=[]):
+def sum_dir(tree, path=[], all_dirs=[]):
     total = 0
     l = []
     for k, v in tree.items():
         if isinstance(v, dict):
-            vTotal, vDirs = sumDirectory(v, path + [k], all_dirs)
+            vTotal, vDirs = sum_dir(v, path + [k], all_dirs)
             l.extend(vDirs)
             total += vTotal
         else:
@@ -65,9 +65,9 @@ def sumDirectory(tree, path=[], all_dirs=[]):
 
 
 def solve(data: str):
-    tree = parseTree(data.splitlines())
+    tree = parse_tree(data.splitlines())
 
-    used_space, all_dirs = sumDirectory(tree)
+    used_space, all_dirs = sum_dir(tree)
     print("Part 1:", sum([s[1] for s in all_dirs if s[1] <= 100000]))
 
     min_delete_size = 30000000 - (70000000 - used_space)

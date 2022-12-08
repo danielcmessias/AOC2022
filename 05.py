@@ -5,7 +5,7 @@ Stacks = List[List[str]]
 Commands = List[Tuple[int, int, int]]
 
 
-def parseStacks(lines: List[str]) -> Tuple[Stacks, List[str]]:
+def parse_stacks(lines: List[str]) -> Tuple[Stacks, List[str]]:
     stacks = [[] for _ in range((len(lines[0]) // 4) + 1)]
     for lineNumber, line in enumerate(lines):
         for i, j in enumerate(range(1, len(lines[0]), 4)):
@@ -17,7 +17,7 @@ def parseStacks(lines: List[str]) -> Tuple[Stacks, List[str]]:
                 stacks[i].append(c)
 
 
-def parseCommands(lines: List[str]) -> Commands:
+def parse_cmds(lines: List[str]) -> Commands:
     for l in lines:
         _, amount, _, origin, _, target = l.split()
         yield int(amount), int(origin) - 1, int(target) - 1
@@ -42,8 +42,8 @@ def part2(stacks: Stacks, commands: Commands) -> str:
 
 def solve(data: str):
     lines = data.splitlines()
-    stacks, lines = parseStacks(lines)
-    commands = parseCommands(lines)
+    stacks, lines = parse_stacks(lines)
+    commands = parse_cmds(lines)
 
     print("Part 1:", part1(stacks, commands))
     print("Part 2:", part2(stacks, commands))
